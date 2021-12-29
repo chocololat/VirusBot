@@ -1,0 +1,1 @@
+CryptoBot, a crypto mining simulator game on Discord.
