@@ -2,7 +2,6 @@ const { Client, Intents, Collection } = require('discord.js');
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const config = require("./config.json");
-const { register } = require('./structures/RegisterCommands');
 const fs = require('fs');
 
 (async() => {
@@ -18,7 +17,7 @@ const fs = require('fs');
         const rest = new REST({ version: "9" }).setToken(config.token);
       console.log("started refreshing /cmds");
   
-      await rest.put(Routes.applicationCommands(config.clientID), { body: cmds });
+      await rest.put(Routes.applicationGuildCommands(config.clientID, "858419638743072809"), { body: cmds });
   
       console.log("reloaded /cmds");
     } catch (e) {
