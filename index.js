@@ -53,7 +53,7 @@ bot.on("interactionCreate", async (interaction) => {
   if (!command) return;
 
   try {
-    await command.execute(interaction);
+    await command.execute(interaction, bot);
   } catch (e) {
     console.error(e);
   }
