@@ -1,21 +1,21 @@
 {
-  "name": "cryptobot",
+  "name": "virusbot",
   "version": "1.0.0",
-  "description": "CryptoBot, a crypto mining simulator game on Discord.",
+  "description": "VirusBot (temporary name), the bot where you, a beginner in the hacking scene, tries to make the most money in this injust world.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chocololat/CryptoBot.git"
+    "url": "git+https://github.com/chocololat/VirusBot.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chocololat/CryptoBot/issues"
+    "url": "https://github.com/chocololat/VirusBot/issues"
   },
-  "homepage": "https://github.com/chocololat/CryptoBot#readme",
+  "homepage": "https://github.com/chocololat/VirusBot#readme",
   "dependencies": {
     "@discordjs/builders": "^0.11.0",
     "@discordjs/rest": "^0.2.0-canary.0",

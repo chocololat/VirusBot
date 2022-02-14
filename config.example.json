@@ -1,7 +1,5 @@
 {
     "token": "",
     "clientID": "",
-    "api": {
-        "coinmarketcap": ""
-    }
+    "dbPassword": ""
 }

@@ -2,7 +2,6 @@ const { Client, Intents, Collection } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const fs = require("fs");
-const axios = require("axios");
 const config = require("./config.json");
 const mysql = require('mysql');
 
@@ -55,42 +54,6 @@ const commandFiles = fs
 
 bot.once("ready", () => {
   console.log("ready");
-
-  bot.db.query(`SELECT * FROM prices`, (err, rows) => {
-    if (err) throw err;
-
-    let time = rows[0].next_update - Date.now();
-
-    if (time > 0) {
-
-      setTimeout(() => {
-        pricesRefresh(bot);
-      }, time);
-
-      setInterval(() => {
-        pricesRefresh(bot);
-      }, 8 * 60 * 60 * 1000);
-
-    } else {
-      pricesRefresh(bot);
-
-      setInterval(() => {
-        pricesRefresh(bot);
-      }, 8 * 60 * 60 * 1000);
-
-    }
-
-    async function pricesRefresh(bot) {
-      
-      axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=1,1027,328&convert=EUR', {
-        headers: {
-          "X-CMC_PRO_API_KEY": config.api.coinmarketcap
-        }
-      }).then(req => {
-        bot.db.query(`UPDATE prices SET bitcoin='${req.data.data['1'].quote.EUR.price.toFixed(2)}', bitcoin_24h='${req.data.data['1'].quote.EUR.percent_change_24h.toFixed(2)}', eth='${req.data.data['1027'].quote.EUR.price.toFixed(2)}', eth_24h='${req.data.data['1027'].quote.EUR.percent_change_24h.toFixed(2)}', monero='${req.data.data['328'].quote.EUR.price.toFixed(2)}', monero_24h='${req.data.data['328'].quote.EUR.percent_change_24h.toFixed(2)}',last_updated='${new Date().getTime()}', next_update='${Number(new Date().getTime() + Number(8 * 60 * 60 * 1000))}'`);  
-      });
-    }
-  });
 });
 
 bot.on("interactionCreate", async (interaction) => {
