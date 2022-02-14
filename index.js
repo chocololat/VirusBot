@@ -12,6 +12,11 @@ const mysql = require('mysql');
     .readdirSync("./commands")
     .filter((file) => file.endsWith(".js"));
 
+    for (const file of commandFiles) {
+      const command = require(`./commands/${file}`);
+      bot.commands.set(command.data.name, command);
+    }
+
   for (const file of cmdFiles) {
     const cmd = require(`./commands/${file}`);
     cmds.push(cmd.data.toJSON());
@@ -47,11 +52,6 @@ bot.db.connect();
 const commandFiles = fs
   .readdirSync("./commands")
   .filter((file) => file.endsWith(".js"));
-
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  bot.commands.set(command.data.name, command);
-}
 
 bot.once("ready", () => {
   console.log("ready");
