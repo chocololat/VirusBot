@@ -1,1 +1,1 @@
-CryptoBot, a crypto mining simulator game on Discord.
+VirusBot (temporary name), the bot where you, a beginner in the hacking scene, tries to make the most money in this injust world.
